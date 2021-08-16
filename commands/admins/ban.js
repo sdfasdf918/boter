@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { Client ,MessageEmbed, Message } = require('discord.js');
 
 module.exports = {
     name: "ban",
@@ -14,9 +14,9 @@ module.exports = {
         .setDescription(`Reason: ${reason} \nModerator: ${message.author.tag} (id: ${message.author.id})`)
         .setColor("RANDOM")
         .setTimestamp();
-        if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("You don't have the permission to use this command!");
+        if (!message.member.permissions.has("BAN_MEMBERS")) return message.channel.send("You don't have the permission to use this command!");
 
-        if (!message.guild.me.hasPermission('BAN_MEMBERS')) return message.channel.send("I don't have the permission to do that!");
+        if (!message.guild.me.permissions.has('BAN_MEMBERS')) return message.channel.send("I don't have the permission to do that!");
 
         if (mentionMember.id === message.author.id) return message.channel.send("You can't ban yourself!");
 

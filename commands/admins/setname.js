@@ -5,7 +5,7 @@ module.exports = {
     description: "Moderation",
 
     run: (client, message, args) => {
-      let botnameee = args.slice(1).join(" ");
+      let botnameee = args
       if (!owners.includes(message.author.id))
         return message.channel.send(
           `** :x: Only Owners Can   Use this Command **`
@@ -14,7 +14,7 @@ module.exports = {
         return message.channel.send(
           `** :x: Please Provide me a name for the bot !**`
         );
-      client.user.setUsername(`${botnameee}`);
+      client.user.setUsername(`${args}`);
       message.channel.send(`Changing The bot's Name ...`).then(me => {
         me.edit(` Done !`);
       });
